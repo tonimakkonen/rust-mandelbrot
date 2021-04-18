@@ -15,9 +15,9 @@ fn main() {
     gl_attr.set_context_version(4, 1);
 
     let window = video_subsystem
-        .window("Game", 900, 700)
+        .window("Mandelbrot", 800, 800)
         .opengl()
-        .resizable()
+        //.resizable()
         .build()
         .unwrap();
 
@@ -40,7 +40,7 @@ fn main() {
 
     // set up vertex buffer object
 
-    let vertices: Vec<f32> = vec![-0.5, -0.5, 0.0, 0.5, -0.5, 0.0, 0.0, 0.5, 0.0];
+    let vertices: Vec<f32> = vec![-1.0, -1.0, 0.0,  1.0, -1.0, 0.0,  -1.0, 1.0, 0.0, -1.0, 1.0, 0.0, 1.0, -1.0, 0.0, 1.0, 1.0, 0.0];
 
     let mut vbo: gl::types::GLuint = 0;
     unsafe {
@@ -84,7 +84,7 @@ fn main() {
     // set up shared state for window
 
     unsafe {
-        gl::Viewport(0, 0, 900, 700);
+        gl::Viewport(0, 0, 800, 800);
         gl::ClearColor(0.3, 0.3, 0.5, 1.0);
     }
 
@@ -111,7 +111,7 @@ fn main() {
             gl::DrawArrays(
                 gl::TRIANGLES, // mode
                 0,             // starting index in the enabled arrays
-                3,             // number of indices to be rendered
+                6,             // number of indices to be rendered
             );
         }
 

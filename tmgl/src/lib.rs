@@ -97,19 +97,6 @@ impl Drop for Shader {
     }
 }
 
-// Actual code start
-
-pub fn clear(r: f32, g: f32, b: f32, a: f32) {
-    unsafe {
-        gl::ClearColor(r, g, b, a);
-        gl::Clear(gl::COLOR_BUFFER_BIT);
-    }
-}
-
-//////////////////////
-// Creating shaders //
-//////////////////////
-
 /// Load a vertex or a fragment shader from a specified file.
 pub fn shader_from_file(name_and_content: (&str, &str)) -> gl::types::GLuint {
     let kind: gl::types::GLenum;
@@ -167,4 +154,11 @@ fn create_whitespace_cstring_with_len(len: usize) -> CString {
     buffer.extend([b' '].iter().cycle().take(len));
     // convert buffer to CString
     unsafe { CString::from_vec_unchecked(buffer) }
+}
+
+pub fn clear(r: f32, g: f32, b: f32, a: f32) {
+    unsafe {
+        gl::ClearColor(r, g, b, a);
+        gl::Clear(gl::COLOR_BUFFER_BIT);
+    }
 }

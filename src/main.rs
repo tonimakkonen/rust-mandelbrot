@@ -1,6 +1,8 @@
 extern crate gl;
 extern crate sdl2;
 
+mod tmgl;
+
 fn main() {
     let sdl = sdl2::init().unwrap();
     let video_subsystem = sdl.video().unwrap();
@@ -15,10 +17,6 @@ fn main() {
     let _gl =
         gl::load_with(|s| video_subsystem.gl_get_proc_address(s) as *const std::os::raw::c_void);
 
-    unsafe {
-        gl::ClearColor(0.3, 0.3, 0.5, 1.0);
-    }
-
     let mut event_pump = sdl.event_pump().unwrap();
     'main: loop {
         for event in event_pump.poll_iter() {
@@ -28,9 +26,7 @@ fn main() {
             }
         }
 
-        unsafe {
-            gl::Clear(gl::COLOR_BUFFER_BIT);
-        }
+        tmgl::clear(0.0, 0.0, 0.0, 0.0);
 
         window.gl_swap_window();
     }

@@ -1,5 +1,5 @@
 [package]
-name = "project1"
+name = "tmgl"
 version = "0.1.0"
 authors = ["tonimakkonen <toni.a.makkonen@gmail.com>"]
 edition = "2018"
@@ -9,5 +9,3 @@ edition = "2018"
 [dependencies]
 sdl2 = "0.34.4"
 gl = "0.14.0"
-tmmacro = { path = "tmmacro" }
-tmgl = { path = "tmgl" }

@@ -1,11 +1,10 @@
 extern crate gl;
 extern crate sdl2;
 extern crate tmmacro;
+extern crate tmgl;
 
 use std::ffi::{CStr, CString};
 use tmmacro::file_name_and_content;
-
-mod tmgl;
 
 fn main() {
     let sdl = sdl2::init().unwrap();
@@ -21,9 +20,6 @@ fn main() {
     let _gl =
         gl::load_with(|s| video_subsystem.gl_get_proc_address(s) as *const std::os::raw::c_void);
 
-    //let a = file_name_and_content!("triangle.frag");
-
-    // TODO: let's do this better
     tmgl::shader_from_file(file_name_and_content!("triangle.frag"));
 
     let mut event_pump = sdl.event_pump().unwrap();

@@ -7,8 +7,13 @@ use std::ffi::{CStr, CString};
 use tmmacro::file_name_and_content;
 
 fn main() {
+
     let sdl = sdl2::init().unwrap();
     let video_subsystem = sdl.video().unwrap();
+    let gl_attr = video_subsystem.gl_attr();
+    gl_attr.set_context_profile(sdl2::video::GLProfile::Core);
+    gl_attr.set_context_version(4, 1);
+
     let window = video_subsystem
         .window("Game", 900, 700)
         .opengl()
@@ -20,7 +25,8 @@ fn main() {
     let _gl =
         gl::load_with(|s| video_subsystem.gl_get_proc_address(s) as *const std::os::raw::c_void);
 
-    tmgl::shader_from_file(file_name_and_content!("triangle.frag"));
+    let a = tmgl::shader_from_file(file_name_and_content!("triangle.frag"));
+    let b = tmgl::shader_from_file(file_name_and_content!("triangle.vert"));
 
     let mut event_pump = sdl.event_pump().unwrap();
     'main: loop {

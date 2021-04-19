@@ -3,7 +3,6 @@ extern crate sdl2;
 extern crate tmmacro;
 extern crate tmgl;
 
-use std::ffi::{CStr, CString};
 use tmmacro::file_name_and_content;
 
 fn main() {

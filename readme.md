@@ -1,0 +1,2 @@
+
+This is a simple Rust project for rendering the Mandelbrot set using [SDL2](https://www.libsdl.org/) and OpenGL. As this project is much about learning Rust, a lot is copied from a Rust+OpenGL tutorial found [here](http://nercury.github.io/rust/opengl/tutorial/2018/02/08/opengl-in-rust-from-scratch-00-setup.html).
